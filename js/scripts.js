@@ -88,7 +88,8 @@ jQuery(document).ready(function($) {
 
         create: function() {
             var html = "<div id='wpas-load'>";
-            html += "<div><img id='"+this.load_img+"' style='display:none;' src='"+this.load_img_url+"'></div>";
+            // html += "<div><img id='"+this.load_img+"' style='display:none;' src='"+this.load_img_url+"'></div>";
+            html += "<div id='"+this.load_img+"' style='display:none;'></div>";
             html += "<div><button id='"+this.load_btn+"' style='display:none;'>"+this.load_btn_text+"</button></div>";
             html += "</div>";
             return html;
