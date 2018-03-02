@@ -413,4 +413,32 @@ class InputMarkup extends StdObject {
         return $this->input('week');
     }
 
+    // https://jqueryui.com/slider/#range
+    private function jqueryrange() {
+      $value = $this->getInputValue();
+      $placeholder = '';
+      if ($this->input->getPlaceholder())
+          $placeholder = ' placeholder="'.$this->input->getPlaceholder().'"';
+      $output = '<script type="text/javascript">
+        jQuery(document).ready(function($) {
+          jQuery( "#'.$this->input->getId().'-slider-range" ).slider({
+            range: true,
+            min: 1,
+            max: 5,
+            step: 1,
+            values: [ 1, 5 ],
+            slide: function( event, ui ) {
+              $( "#'.$this->input->getId().'" ).val( ui.values[ 0 ] + ":" + ui.values[ 1 ] );
+              // submit search upon change of value
+              $(this).parents("form").submit();
+            }
+          });
+          jQuery( "#'.$this->input->getId().'" ).val( $( "#'.$this->input->getId().'-slider-range" ).slider( "values", 0 ) + ":" + $( "#'.$this->input->getId().'-slider-range" ).slider( "values", 1 ) );
+        } );
+      </script>';
+      $output .= ' <input type="text" id="'.$this->input->getId().'" class="wpas-jqueryrange '.$this->input->getClass().'" value="'.$value.'" name="'.$this->input->getInputName().'"'.$placeholder.' '.$this->attributesString().' style="cursor:default; max-width: 25%; background-color: #f5f5f5; border:0; color:#333; font-weight:bold; "">';
+      $output .= '<div id="'.$this->input->getId().'-slider-range"></div>';
+      return $output;
+    }
+
 }

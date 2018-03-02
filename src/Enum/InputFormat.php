@@ -22,4 +22,5 @@ class InputFormat extends BasicEnum {
     const reset = "reset";
     const clear = "clear";
     const html = "html";
+    const jqueryrange = "jqueryrange";
 }
