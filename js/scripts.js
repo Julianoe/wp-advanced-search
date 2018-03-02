@@ -47,6 +47,9 @@ jQuery(document).ready(function($) {
             $(this).submit();
             return false;
         });
+        $('.ui-slider-range').css({'left': '0%', 'width': '100%'});
+        $('.ui-slider .ui-slider-handle:nth-child(2)').css('left', '0%');
+        $('.ui-slider .ui-slider-handle:nth-child(3)').css('left', '100%');
     });
 
     /**
